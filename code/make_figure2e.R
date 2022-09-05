@@ -6,16 +6,16 @@ library("ggplot2")
 library("patchwork")
 library("plotly")
 library("scater")
-set.seed(11111)
+set.seed(1234)
 
 ## SIMULATE DATA
 
 ## We simulate an hypothetical differentiation process based on 4 
-## components that we will relate to as protein sets: 
-## - protein set Z determines the progression of the differentiation
-## - protein set X and Y provide a cycling process until the cell 
+## components: 
+## - Component Z determines the progression of the differentiation
+## - Component X and Y provide a cycling process until the cell 
 ##   stabilize into one of two cell states.
-## - protein set W determines  whether the cells are predisposed to 
+## - Component W determines  whether the cells are predisposed to 
 ##   state 1 or 2
 
 ## Create the protein set Z
@@ -53,8 +53,8 @@ y[i][isState1] <- y[i][isState1][1]
 y[i][!isState1] <- y[i][!isState1][1]
 ## Add biological heterogeneity unrelated to the differentiation 
 ## process
-x <- x + runif(length(x), min = -maxNoise, max = max(x) * 0.1)
-y <- y + runif(length(y), min = -maxNoise, max = max(y) * 0.1)
+x <- x + runif(length(x), min = -max(x) * 0.1, max = max(x) * 0.1)
+y <- y + runif(length(y), min = -max(x) * 0.1, max = max(y) * 0.1)
 
 ## Scale the components 
 customScale <- function(x) {
@@ -64,27 +64,25 @@ customScale <- function(x) {
 x <- customScale(x)
 y <- customScale(y)
 z <- customScale(z)
-w <- customScale(w)
 
 ## Simulate the expression matrix
 ## Each protein set is composed of the same number of proteins np
-np <- 20
+np <- 1 ## increase this to get protein sets instead of a single protein
 prots <- rep(1, np)
 ## The proteins in each protein set have increasing abundances
 a <- 1:np
-## Create the expression matrix for each protein set
-gs1 <- prots * a %o% z / max(z)
-gs2 <- prots * a %o% x / max(x)
-gs3 <- prots * a %o% y / max(y)
-gs4 <- prots * a %o% w / max(w)
+## Create the protein abundance matrix for each component
+pz <- prots * a %o% z / max(z)
+px <- prots * a %o% x / max(x)
+py <- prots * a %o% y / max(y)
 ## Combine the data in a single abundance matrix
-dat <- rbind(gs1, gs2, gs3, gs4)
+dat <- rbind(pz, px, py)
 image(dat)
 
 ## Scale data
 dat <- dat * 1E6
 ## Add technical noise
-dat[] <- 2^rnorm(length(dat), log2(as.vector(dat + 1)), sd = 0.5)
+dat[] <- 2^rnorm(length(dat), log2(as.vector(dat + 1)), sd = 0.15)
 image(dat)
 
 ## COMPUTE DIMENSION REDUCTIONS
@@ -138,7 +136,7 @@ ply <- plot_ly(x = x, y = y, z = z,
                                                 y = 0,
                                                 z = 1))))
 ply
-plyFile <- "figure2eA.png"
+plyFile <- "figs/figure2e_A.png"
 save_image(ply, normalizePath(plyFile))
 
 ## Plot of the 3 dimension reduction results
@@ -158,11 +156,11 @@ pl <- ggplot(df) +
                           23",
                 guides = "collect") &
     aes(col = I(colors)) &
-    geom_point() 
+    geom_point() &
     theme_void() &
     theme(legend.position = "none")
 pl
-ggsave("figure2eBCD.svg", pl)
+ggsave("figs/figure2e_BCD.svg", pl)
 
 ## The two files were assembled into Figure2e using Inkscape. 
 
