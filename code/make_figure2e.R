@@ -5,6 +5,7 @@ library("destiny")
 library("ggplot2")
 library("patchwork")
 library("plotly")
+library("reticulate")
 library("scater")
 set.seed(1234)
 
@@ -135,9 +136,9 @@ ply <- plot_ly(x = x, y = y, z = z,
                                       up = list(x = 0,
                                                 y = 0,
                                                 z = 1))))
-ply
 plyFile <- "figs/figure2e_A.png"
-save_image(ply, normalizePath(plyFile))
+reticulate::py_run_string("import sys")
+save_image(ply, plyFile)
 
 ## Plot of the 3 dimension reduction results
 pl <- ggplot(df) +
@@ -159,7 +160,6 @@ pl <- ggplot(df) +
     geom_point() &
     theme_void() &
     theme(legend.position = "none")
-pl
 ggsave("figs/figure2e_BCD.svg", pl)
 
 ## The two files were assembled into Figure2e using Inkscape. 

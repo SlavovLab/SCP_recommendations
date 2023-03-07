@@ -21,6 +21,23 @@ The white paper with community guidelines and recommendations is freely availabl
 
 For more information, contact [Slavov Laboratory](https://slavovlab.net).
 
+## Running the code in this repository
+
+_Prerequisites_: This recipe assumes a compute system with docker installed and access to the internet.
+
+The code in the SCP recommendations repository can be run with the following sequence of commands:
+
+```
+git clone https://github.com/SlavovLab/SCP_recommendations.git
+docker build -t scp-proteomics-docker-image .
+docker run \
+  --rm -it \
+  -v $(pwd)/code:/code \
+  -v $(pwd)/figs:/figs \
+  scp-proteomics-docker-image \
+  Rscript "./code/make_figure2e.R"
+```
+
 ## License
 
 The code is distributed by an [MIT license](https://github.com/SlavovLab/DO-MS/blob/master/LICENSE).
