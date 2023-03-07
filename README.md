@@ -21,11 +21,11 @@ The white paper with community guidelines and recommendations is freely availabl
 
 For more information, contact [Slavov Laboratory](https://slavovlab.net).
 
-### License
+## License
 
 The code is distributed by an [MIT license](https://github.com/SlavovLab/DO-MS/blob/master/LICENSE).
 
-### Contributing
+## Contributing
 
 Please feel free to contribute to this project by opening an issue or pull request.
 
