@@ -6,7 +6,7 @@
 
 * [Guidelines Website](https://single-cell.net/guidelines)
 * [The *Nature Methods* white paper](https://www.nature.com/articles/s41592-023-01785-3)
-* [Preprint](https://arxiv.org/abs/2207.10815)
+* [Blog](https://blog.slavovlab.net/2023/03/04/guidelines-for-single-cell-proteomic-experiments/)
 
 &nbsp;
 
