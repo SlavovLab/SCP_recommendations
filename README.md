@@ -25,14 +25,17 @@ The code in the SCP recommendations repository can be run with the following seq
 
 ```
 git clone https://github.com/SlavovLab/SCP_recommendations.git
-docker build -t scp-proteomics-docker-image .
 docker run \
   --rm -it \
-  -v $(pwd)/code:/code \
-  -v $(pwd)/figs:/figs \
-  scp-proteomics-docker-image \
+  --volume $(pwd)/code:/code \
+  --volume $(pwd)/figs:/figs \
+  fabianegli/scp-recommendations-2022:1.0 \
   Rscript "./code/make_figure2e.R"
 ```
+
+This will re-create the figures into the `figs` folder mounted to the docker container with the `--volumes` parameter in the command above.
+
+The [Dockerfile](./Dockerfile) and together with [install_dependencies.R](./install_dependencies.R) were used to produce the Docker image `fabianegli/scp-recommendations-2022:1.0`.
 
 ## License
 
