@@ -123,7 +123,7 @@ df$colors[df$CellType == "A"] <- colorRampPalette(c("#4e9c59", "grey", "#b35140"
 ply <- plot_ly(x = x, y = y, z = z, 
         type = "scatter3d",
         mode = "markers",
-        marker = list(color = df$colors, size = 3)) %>% 
+        marker = list(color = df$colors, size = 5/3)) %>% 
     layout(paper_bgcolor = rgb(1, 1, 1, 0),
            plot_bgcolor = rgb(1, 1, 1, 0),
            scene = list(xaxis = list(visible = FALSE),
