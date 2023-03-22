@@ -1,6 +1,8 @@
 # **Initial recommendations for performing, benchmarking, and reporting single-cell proteomics experiments**
 
+
 ![GitHub](https://img.shields.io/github/license/SlavovLab/DO-MS.svg)
+
 
 * [Guidelines Website](https://single-cell.net/guidelines)
 * [The *Nature Methods* white paper](https://www.nature.com/articles/s41592-023-01785-3)
@@ -9,8 +11,6 @@
 &nbsp;
 
 <img src="https://single-cell.net/proteomics/photos/Data-evaluation-and-interpretation.png" width="70%">
-
----
 
 &nbsp;
 
