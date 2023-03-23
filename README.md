@@ -12,6 +12,7 @@
 
 <img src="https://single-cell.net/proteomics/photos/Data-evaluation-and-interpretation.png" width="70%">
 
+
 &nbsp;
 
 * [Example *README* file](https://www.nature.com/articles/s41592-023-01785-3#Sec29)
@@ -28,9 +29,12 @@
 
 The white paper with community guidelines and recommendations is freely available at *Nature Methods*: [*Performing, benchmarking, and reporting single-cell proteomics experiments*](https://www.nature.com/articles/s41592-023-01785-3), *Nature Methods*, **20**, 375--386 (2023) doi: [10.1038/s41592-023-01785-3](https://doi.org/10.1038/s41592-023-01785-3)
 
+
 The preprint is available at the *arXiv*: [Gatto et al., 2022](https://doi.org/10.48550/arXiv.2207.10815).
 
+
 For more information, contact [Slavov Laboratory](https://slavovlab.net).
+
 
 ## Running the code in this repository
 
@@ -50,7 +54,7 @@ docker run \
 
 This will re-create the figures into the `figs` folder mounted to the docker container with the `--volumes` parameter in the command above.
 
-The [Dockerfile](./Dockerfile) and together with [install_dependencies.R](./install_dependencies.R) were used to produce the Docker image `fabianegli/scp-recommendations-2022:1.0`.
+The [Dockerfile](./Dockerfile) together with [install_dependencies.R](./install_dependencies.R) were used to produce the Docker image `fabianegli/scp-recommendations-2022:1.0` which is available on Docker Hub.
 
 ## License
 
