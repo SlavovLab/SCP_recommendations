@@ -25,7 +25,7 @@
 
 [The *Nature Methods* white paper](https://www.nature.com/articles/s41592-023-01785-3) proposed best practices, quality controls and data-reporting recommendations to assist in the broad adoption of reliable quantitative workflows for single-cell proteomics.
 
---------
+---
 
 The white paper with community guidelines and recommendations is freely available at *Nature Methods*: [*Performing, benchmarking, and reporting single-cell proteomics experiments*](https://www.nature.com/articles/s41592-023-01785-3), *Nature Methods*, **20**, 375--386 (2023) doi: [10.1038/s41592-023-01785-3](https://doi.org/10.1038/s41592-023-01785-3)
 
@@ -35,25 +35,36 @@ The preprint is available at the *arXiv*: [Gatto et al., 2022](https://doi.org/1
 
 For more information, contact [Slavov Laboratory](https://slavovlab.net).
 
-### License
+
+## Running the code in this repository
+
+_Prerequisites_: This recipe assumes a compute system with docker installed and access to the internet.
+
+The code in the SCP recommendations repository can be run with the following sequence of commands:
+
+```
+git clone https://github.com/SlavovLab/SCP_recommendations.git
+docker run \
+  --rm -it \
+  --volume $(pwd)/code:/code \
+  --volume $(pwd)/figs:/figs \
+  fabianegli/scp-recommendations-2022:1.0 \
+  Rscript "./code/make_figure2e.R"
+```
+
+This will re-create the figures into the `figs` folder mounted to the docker container with the `--volumes` parameter in the command above.
+
+The [Dockerfile](./Dockerfile) together with [install_dependencies.R](./install_dependencies.R) were used to produce the Docker image `fabianegli/scp-recommendations-2022:1.0` which is available on Docker Hub.
+
+## License
 
 The code is distributed by an [MIT license](https://github.com/SlavovLab/DO-MS/blob/master/LICENSE).
 
-### Contributing
+## Contributing
 
 Please feel free to contribute to this project by opening an issue or pull request.
 
-<!--
-### Data
-All data used for the manuscript is available on [UCSD's MassIVE Repository](https://massive.ucsd.edu/ProteoSAFe/dataset.jsp?task=ed5a1ab37dc34985bbedbf3d9a945535)
--->
-
-<!--
-### Figures/Analysis
-Scripts for the figures in the DART-ID manuscript are available in a separate GitHub repository, [https://github.com/SlavovLab/DART-ID_2018](https://github.com/SlavovLab/DART-ID_2018)
--->
-
--------------
+---
 
 ## Help!
 
